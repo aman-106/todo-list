@@ -1,6 +1,5 @@
 import React, { useImperativeHandle, useRef } from 'react'
 import { DragSource, DropTarget } from 'react-dnd'
-// import ItemTypes from './ItemTypes'
 const style = {
   border: '1px dashed gray',
   padding: '0.5rem 1rem',
@@ -12,6 +11,7 @@ const style = {
 const ItemTypes = {
   CARD: 'card',
 }
+// render dragable elem for task
 const Card = React.forwardRef(
   ({ text, isDragging, connectDragSource, connectDropTarget }, ref) => {
     const elementRef = useRef(null)
@@ -22,8 +22,9 @@ const Card = React.forwardRef(
       getNode: () => elementRef.current,
     }))
     return (
-      <div ref={elementRef} style={{ ...style, opacity }}>
-        {text}
+      <div ref={elementRef} style={{ ...style, opacity }} className="task">
+        <input type='checkbox'></input>
+        <span className='task__name'>{text}</span>
       </div>
     )
   },

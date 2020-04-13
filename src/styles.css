@@ -49,57 +49,7 @@ select.error {
 }
 
 input[type="submit"],
-button {
-  width: 100%;
-  background-color: #4caf50;
-  color: white;
-  padding: 1.4rem 2rem;
-  margin: 0.8rem 0;
-  border: none;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  font-size: 1.5rem;
-  line-height: 0.15rem;
-  text-transform: capitalize;
-  
-}
 
-input[type="submit"]:hover,
-button:hover {
-  background-color: #45a049;
-}
-
-button.btn--remove {
-  color: black;
-  background-color: #e6b265;
-}
-
-button.btn--remove:hover {
-  background-color: #ec9109;
-}
-
-button.btn--primary {
-  color: white;
-  background-color: #292828;
-}
-
-button.btn--primary:hover {
-  background-color: black;
-}
-
-button.btn--secondary {
-  color: white;
-  background-color: grey;
-}
-
-button.btn--secondary:hover {
-  background-color: #413e3e;
-}
-
-label {
-  font-size: 1.5rem;
-  line-height: 0.15rem;
-}
 
 .app .app__header{
   /* padding: 3rem; */

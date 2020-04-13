@@ -1,26 +1,13 @@
 import React, { useState, useEffect } from "react";
 import update from 'immutability-helper'
 import Card from './Card'
-
-const Container = ({ tasksListArr }) => {
+// renderr list of dragable and drop task list
+const TasksList = ({ tasksListArr }) => {
   {
-    const [cards, setCards] = useState(tasksListArr);
-    useEffect(function () {
-      setCards(tasksListArr)
-    }, [tasksListArr]);
-    const moveCard = (dragIndex, hoverIndex) => {
-      const dragCard = cards[dragIndex]
-      setCards(
-        update(cards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, dragCard],
-          ],
-        }),
-      )
-    }
+
+    const [cards, moveCard] = useDragabletask(tasksListArr);
     return (
-      <div>
+      <div className='tasks-list'>
         {cards.map((card, i) => (
           <Card
             key={card.id}
@@ -34,4 +21,25 @@ const Container = ({ tasksListArr }) => {
     );
   }
 };
-export default Container;
+// hook for maintain state for rearrnage task listt
+function useDragabletask(tasksListArr) {
+  const [cards, setCards] = useState(tasksListArr);
+  useEffect(function () {
+    setCards(tasksListArr)
+  }, [tasksListArr]);
+  const moveCard = (dragIndex, hoverIndex) => {
+    const dragCard = cards[dragIndex]
+    setCards(
+      update(cards, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, dragCard],
+        ],
+      }),
+    )
+  }
+  return [cards, moveCard]
+
+}
+
+export default TasksList;

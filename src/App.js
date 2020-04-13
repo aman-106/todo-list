@@ -9,7 +9,7 @@ const emptyProjects = [];
 const defaultProjects = '';
 const url = 'http://www.mocky.io/v2/5e90316a330000741327d563.json';
 
-
+//  render to do list app
 export default function App() {
 
   const [selectedProjects, setSelectedProjects] = useState(defaultProjects);
@@ -33,6 +33,7 @@ export default function App() {
             return <option value={name} key={name}>{name}</option>
           })}
         </select>
+        {/* show liist of tasks */}
         <DndProvider backend={Backend}>
           <TasksList tasksListArr={tasksListArr} />
         </DndProvider>
@@ -41,41 +42,22 @@ export default function App() {
   );
 }
 
-function useDragabletask(initialCards) {
-  console.log('initialCards', initialCards)
-  const [cards, setCards] = useState(initialCards);
-  const moveCard = (dragIndex, hoverIndex) => {
-    const dragCard = cards[dragIndex]
-    setCards(
-      update(cards, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, dragCard],
-        ],
-      }),
-    )
-  }
-
-
-  return [cards, setCards, moveCard]
-
-}
-
-
+//hook for get list of tasks for projects
 function useSelectedProjects() {
   const [projectsInfo, setProjects] = useState(emptyProjects);
   useEffect(function () {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        console.log("sdjdj", data);
         setProjects(data.projects);
       })
       .catch(e => {
+        // set empty error 
+        setProjects([]);
         console.error(e);
       });
   }, []);
-
+  //   reformat list of tasks 
   const foramtedProjectsInfo = useMemo(
     function () {
       const info = {};
@@ -88,8 +70,6 @@ function useSelectedProjects() {
         });
         return project.name;
       })
-      console.log('info', info)
-
       return { names, info };
 
     }, [projectsInfo]
