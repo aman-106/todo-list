@@ -61,6 +61,7 @@ button {
   font-size: 1.5rem;
   line-height: 0.15rem;
   text-transform: capitalize;
+  
 }
 
 input[type="submit"]:hover,
@@ -98,4 +99,50 @@ button.btn--secondary:hover {
 label {
   font-size: 1.5rem;
   line-height: 0.15rem;
+}
+
+.app .app__header{
+  /* padding: 3rem; */
+  background-color: black;
+  box-shadow: 3px 5px 5px 0px rgba(0,0,0,0.75);
+  padding: 2rem;
+  font-size: 2.4rem;
+  font-weight: 500;
+  padding: 3rem;
+  color: white;
+  text-align: center;
+}
+
+.app .app__main{
+  padding: 3rem;
+}
+
+.app .app__main select{
+  height: 40px;
+
+}
+.tasks-list {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks-list .task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid grey;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.4rem;
+
+}
+
+.tasks-list .task input{
+  flex-basis: 10%;
+}
+
+.tasks-list .task .task__name{
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
