@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import update from 'immutability-helper'
 import Card from './Card'
 
 const Container = ({ tasksListArr }) => {
   {
     const [cards, setCards] = useState(tasksListArr);
+    useEffect(function () {
+      setCards(tasksListArr)
+    }, [tasksListArr]);
     const moveCard = (dragIndex, hoverIndex) => {
       const dragCard = cards[dragIndex]
       setCards(
@@ -18,7 +21,7 @@ const Container = ({ tasksListArr }) => {
     }
     return (
       <div>
-        {tasksListArr.map((card, i) => (
+        {cards.map((card, i) => (
           <Card
             key={card.id}
             index={i}
